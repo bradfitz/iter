@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/bradfitz/iter"
+	"github.com/voutasaurus/iter"
 )
 
 func ExampleN() {
@@ -23,7 +23,14 @@ func TestAllocs(t *testing.T) {
 	allocs := testing.AllocsPerRun(500, func() {
 		x = iter.N(1e9)
 	})
-	if allocs > 0.1 {
+	if allocs > 1.1 {
 		t.Errorf("allocs = %v", allocs)
+	}
+}
+
+func TestNest(t *testing.T) {
+	l := len(iter.N(&struct{ N []string }{N: make([]string, 42)}))
+	if l != 42 {
+		t.Errorf("expected: %d, got: %d", 42, l)
 	}
 }
