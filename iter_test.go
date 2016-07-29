@@ -34,3 +34,26 @@ func TestNest(t *testing.T) {
 		t.Errorf("expected: %d, got: %d", 42, l)
 	}
 }
+
+func TestNil(t *testing.T) {
+	z := len(iter.N(nil))
+	if z != 0 {
+		t.Errorf("iter.N(nil): expected: 0, got: %d", z)
+	}
+}
+
+func TestNilPtr(t *testing.T) {
+	var x *int
+	z := len(iter.N(x))
+	if z != 0 {
+		t.Errorf("iter.N(nil): expected: 0, got: %d", z)
+	}
+}
+
+func TestNilInterface(t *testing.T) {
+	var x iter.Inter
+	z := len(iter.N(x))
+	if z != 0 {
+		t.Errorf("iter.N(nil): expected: 0, got: %d", z)
+	}
+}

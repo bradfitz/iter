@@ -75,7 +75,9 @@ func n(any interface{}) int {
 	case reflect.Array, reflect.Chan, reflect.Map, reflect.Slice, reflect.String:
 		return v.Len()
 	case reflect.Ptr, reflect.Interface:
-		return n(v.Elem().Interface())
+		if e := v.Elem(); e.IsValid() && e.CanInterface() {
+			return n(e.Interface())
+		}
 	case reflect.Struct:
 		if f := v.FieldByName("N"); f.IsValid() {
 			return n(f.Interface())
