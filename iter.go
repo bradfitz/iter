@@ -1,4 +1,4 @@
-// Package iter provides a syntantically different way to iterate over integers. That's it.
+// Package iter provides a syntactically different way to iterate over integers. That's it.
 package iter
 
 // N returns a slice of n 0-sized elements, suitable for ranging over.
