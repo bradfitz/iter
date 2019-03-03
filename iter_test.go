@@ -1,3 +1,7 @@
+// Copyright 2014 The Go Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style
+// license that can be found in the LICENSE file.
+
 package iter_test
 
 import (
@@ -19,10 +23,11 @@ func ExampleN() {
 }
 
 func TestAllocs(t *testing.T) {
-	var x []struct{}
-	allocs := testing.AllocsPerRun(500, func() {
-		x = iter.N(1e9)
+	var sink []struct{}
+	allocs := testing.AllocsPerRun(1000, func() {
+		sink = iter.N(1e9)
 	})
+	_ = sink
 	if allocs > 0.1 {
 		t.Errorf("allocs = %v", allocs)
 	}
