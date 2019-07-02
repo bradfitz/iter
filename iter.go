@@ -6,7 +6,7 @@
 // integers. That's it.
 //
 // This package was intended to be an educational joke when it was
-// released in in 2014. People didn't get the joke part and started
+// released in 2014. People didn't get the joke part and started
 // depending on it. That's fine, I guess. (This is the Internet.) But
 // it's kinda weird. It's one line, and not even idiomatic Go style. I
 // encourage you not to depend on this or write code like this, but I
